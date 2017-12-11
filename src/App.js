@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Header from './Header';
 import Search from './Search';
+import Information from './Information'
 
 class App extends Component {
   constructor(props) {
@@ -10,12 +11,8 @@ class App extends Component {
     this.handleSearch = this
       .handleSearch
       .bind(this);
-  }
-  state = {
-    data: {
-      Title: 'Undefined'
-    }
-  };
+    this.state = {}
+    };
 
   componentDidMount() {
     fetch(`http://www.omdbapi.com/?t=alien&apikey=7f555475`)
@@ -29,22 +26,20 @@ class App extends Component {
     fetch(`http://www.omdbapi.com/?t=${option}&apikey=7f555475`)
       .then(response => response.json())
       .then(data => this.setState({data}))
-      .then(() => console.log(this.state))
+      .catch(error => alert(`Error ${error}`));
+  }
+
+  handleResetState(e){
+    e.preventDefault();
+    this.setState = {};
   }
 
   render() {
     return (
       <div>
-        <Header value={this.state}/>
-        <div>
-          <h1>Search:</h1>
-          <div>
-            <form onSubmit={this.handleSearch}>
-              <input type='text' name='option'/>
-              <button>Search for movie</button>
-            </form>
-          </div>
-        </div>
+        <Header/>
+        <Search handleSearch={this.handleSearch}/>
+        <Information value={this.state}/>
       </div>
     );
   }
