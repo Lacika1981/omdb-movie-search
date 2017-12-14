@@ -6,10 +6,6 @@ h1, h2, h3, h4, h5, h6, p, a {
    padding: 0;
  }
 
- img {
-   max-width: 100%;
- }
-
  .movieTitle {
    color: white;
    background-color: grey;
@@ -21,3 +17,13 @@ h1, h2, h3, h4, h5, h6, p, a {
  .pInline {
    display: inline-block;
  }
+
+ .information-col-one p:not(.progress-bar),
+ .information-col-two p:not(.progress-bar) {
+  padding-bottom: 5px;
+}
+
+.information-col-two p:last-child,
+.information-col-two p:last-child {
+  padding-bottom: 0;
+}
