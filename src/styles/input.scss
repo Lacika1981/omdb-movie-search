@@ -1,0 +1,23 @@
+// reset
+
+h1, h2, h3, h4, h5, h6, p, a {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+ }
+
+ img {
+   max-width: 100%;
+ }
+
+ .movieTitle {
+   color: white;
+   background-color: grey;
+   padding-top: 15px;
+   padding-bottom: 15px;
+   border-radius: 15px;
+ }
+
+ .pInline {
+   display: inline-block;
+ }

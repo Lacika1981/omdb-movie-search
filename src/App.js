@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './App.css';
 import Header from './Header';
 import Search from './Search';
 import Information from './Information'
+import './styles/styles.css';
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +37,9 @@ class App extends Component {
   render() {
     return (
       <div>
+      <div className="container">
         <Header/>
+        </div>
         <Search handleSearch={this.handleSearch}/>
         <Information value={this.state}/>
       </div>

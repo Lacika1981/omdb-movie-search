@@ -12,9 +12,13 @@ const Information = (props) => {
             )
       }
       return (
-            <div>
+            <div className="container">
+            <div className="row">
+            <div className="col-md-9">
+            <div  className="text-center movieTitle">
                   <h4>Movie title:</h4>
-                  <p>{props.value.data.Title}</p>
+                  <p className="pInline">{props.value.data.Title} <p className="pInline">({props.value.data.Year})</p></p>
+                  </div>
                   <h4>Actors:</h4>
                   <p>{props.value.data.Actors}</p>
                   <h4>Director:</h4>
@@ -25,15 +29,17 @@ const Information = (props) => {
                   <p>{props.value.data.Production}</p>
                   <h4>Released:</h4>
                   <p>{props.value.data.Released}</p>
-                  <h4>Year:</h4>
-                  <p>{props.value.data.Year}</p>
                   <h4>imdbRating:</h4>
                   <p>{props.value.data.imdbRating}</p>
                   <h4>Plot:</h4>
                   <p>{props.value.data.Plot}</p>
                   <h4>Awards:</h4>
                   <p>{props.value.data.Awards}</p>
+                  </div>
+                  <div className="col-md-3">
                   <img src={props.value.data.Poster} alt='poster'/>
+                  </div>
+                  </div>
             </div>
       )
 }
