@@ -11,7 +11,9 @@ class App extends Component {
     this.handleSearch = this
       .handleSearch
       .bind(this);
-    this.state = {}
+    this.state = {
+      data: {}
+    }
     };
 
   componentDidMount() {
@@ -29,11 +31,6 @@ class App extends Component {
       .catch(error => alert(`Error ${error}`));
   }
 
-  handleResetState(e){
-    e.preventDefault();
-    this.setState = {};
-  }
-
   render() {
     return (
       <div>
@@ -41,7 +38,7 @@ class App extends Component {
         <Header/>
         </div>
         <Search handleSearch={this.handleSearch}/>
-        <Information value={this.state}/>
+        <Information value={this.state.data}/>
       </div>
     );
   }

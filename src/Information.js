@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 
 const Information = (props) => {
+      console.log(props);
       if (Object.keys(props.value).length === 0) {
             return <div>Loading...</div>
       }
-      if (props.value.data.Response && props.value.data.Response === "False") {
+      if (props.value.Response && props.value.Response === "False") {
             return (
                   <div>
                         <h1>Sorry there is no movie with that title</h1>
@@ -12,13 +13,15 @@ const Information = (props) => {
             )
       }
 
-      this.handleColor = () => {
-            return 'red';
+      this.handleColor = (e) => {
+            let colorBackValue;
+            (e > 41 && e < 60) ? colorBackValue = 'rgb(255, 153, 0)' : (e > 61 && e < 80) ? colorBackValue = 'rgb(255, 214, 51)' : e > 81 ? colorBackValue = 'rgb(0, 179, 60)' : colorBackValue = 'rgb(153, 0, 0)';
+            return colorBackValue;
       }
 
       const styles = {
-            width: ((props.value.data.imdbRating) * 10) +"%",
-            background: this.handleColor()
+            width: ((props.value.imdbRating) * 10) +"%",
+            background: this.handleColor((props.value.imdbRating) * 10)
       }
 
       return (
@@ -27,34 +30,33 @@ const Information = (props) => {
                         <div className="col-md-9">
                               <div className="text-center movieTitle">
                                     <h4>Movie title:</h4>
-                                    <p className="pInline">{props.value.data.Title}</p>
-                                    <p className="pInline">({props.value.data.Year})</p>
+                                    <p className="pInline">{props.value.Title} ({props.value.Year})</p>
                               </div>
                               <div className="row">
                                     <div className="col-md-6 information-col-one">
                                           <h4>Actors:</h4>
-                                          <p>{props.value.data.Actors}</p>
+                                          <p>{props.value.Actors !== 'N/A' && props.value.Actors}</p>
                                           <h4>Director:</h4>
-                                          <p>{props.value.data.Director}</p>
+                                          <p>{props.value.Director !== 'N/A' && props.value.Director}</p>
                                           <h4>Metascore:</h4>
-                                          <p>{props.value.data.Metascore}</p>
+                                          <p>{props.value.Metascore !== 'N/A' && props.value.Metascore}</p>
                                           <h4>Production:</h4>
-                                          <p>{props.value.data.Production}</p>
+                                          <p>{props.value.Production !== 'N/A' && props.value.Production}</p>
                                           <h4>Released:</h4>
-                                          <p>{props.value.data.Released}</p>
+                                          <p>{props.value.Released !== 'N/A' && props.value.Released}</p>
                                           <h4>imdbRating:</h4>
-                                          <p className="progress-bar" role="progressbar" style={styles} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{props.value.data.imdbRating}</p>
+                                          <p className="progress-bar" role="progressbar" style={styles} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{props.value.imdbRating}</p>
                                     </div>
                                     <div className="col-md-6 information-col-two">
                                           <h4>Plot:</h4>
-                                          <p className="text-justify">{props.value.data.Plot}</p>
+                                          <p className="text-justify">{props.value.Plot !== 'N/A' && props.value.Plot}</p>
                                           <h4>Awards:</h4>
-                                          <p>{props.value.data.Awards}</p>
+                                          <p>{props.value.Awards !== 'N/A' && props.value.Awards}</p>
                                     </div>
                               </div>
                         </div>
                         <div className="col-md-3">
-                              <img src={props.value.data.Poster} className="img-fluid" alt='poster'/>
+                              <img src={props.value.Poster} className="img-fluid" alt={props.value.Title}/>
                         </div>
                   </div>
             </div>
