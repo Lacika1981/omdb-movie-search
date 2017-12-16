@@ -8,12 +8,12 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div className="d-flex flex-column align-items-center mt-5 mb-5">
         <h1>Search:</h1>
         <div>
-          <form onSubmit={this.props.handleSearch}>
+          <form className="d-flex flex-column" onSubmit={this.props.handleSearch}>
             <input type='text' name='option'/>
-            <button>Search for movie</button>
+            <button className="mt-1">Search for movie</button>
           </form>
         </div>
       </div>

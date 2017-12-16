@@ -1,3 +1,6 @@
+body {
+  background-color: #e1e1e1; }
+
 h1, h2, h3, h4, h5, h6, p, a {
   box-sizing: border-box;
   margin: 0;
@@ -5,17 +8,43 @@ h1, h2, h3, h4, h5, h6, p, a {
 
 .movieTitle {
   color: white;
-  background-color: grey;
+  background-color: rgba(255, 0, 0, 0.582);
   padding-top: 15px;
   padding-bottom: 15px;
   border-radius: 15px; }
 
-.information-col-one p:not(.progress-bar),
-.information-col-two p:not(.progress-bar) {
+.information-col-one div {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
   padding-bottom: 5px; }
 
-.information-col-two p:last-child,
-.information-col-two p:last-child {
-  padding-bottom: 0; }
+.information-col-one .poster-image {
+  justify-content: center; }
+
+.information-col-one div p {
+  text-align: right;
+  line-height: 2rem; }
+
+.information-col-one div h4 {
+  align-self: center; }
+
+.information-col-one div p {
+  width: 50%; }
+
+button {
+  width: 85px;
+  height: 85px;
+  margin: auto;
+  border-radius: 100%;
+  border: 1px solid rgba(173, 173, 173, 0.925);
+  box-shadow: #888888 5px 5px 35px; }
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: #888888 4px 4px 33px; }
+
+button:focus {
+  outline: 0; }
 
 /*# sourceMappingURL=styles.css.map */
