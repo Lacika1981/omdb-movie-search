@@ -11,24 +11,33 @@ class App extends Component {
     this.handleSearch = this
       .handleSearch
       .bind(this);
+      this.handleDetail = this
+      .handleDetail
+      .bind(this);
     this.state = {
-      data: {}
+      data: [],
+      selectedMovie: null
     }
     };
 
   componentDidMount() {
-    fetch(`http://www.omdbapi.com/?t=alien&apikey=7f555475`)
+    fetch(`http://www.omdbapi.com/?s=alien&apikey=7f555475`)
       .then(response => response.json())
-      .then(data => this.setState({data}))
+      .then(data => this.setState({data: data, selectedMovie: data.Search[0]}))
   }
 
   handleSearch(e) {
     e.preventDefault();
     const option = e.target.elements.option.value;
-    fetch(`http://www.omdbapi.com/?t=${option}&apikey=7f555475`)
+    fetch(`http://www.omdbapi.com/?s=${option}&apikey=7f555475`)
       .then(response => response.json())
-      .then(data => this.setState({data}))
+      .then(data => this.setState({data: data, selectedMovie: data.Search[0]}))
       .catch(error => alert(`Error ${error}`));
+  }
+
+  handleDetail(e){
+    e.preventDefault();
+    console.log(e.target.alt);
   }
 
   render() {
@@ -38,7 +47,8 @@ class App extends Component {
         <Header/>
         </div>
         <Search handleSearch={this.handleSearch}/>
-        <Information value={this.state.data}/>
+        <Information value={this.state.selectedMovie}
+        handleDetail={this.handleDetail}/>
       </div>
     );
   }

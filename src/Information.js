@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 const Information = (props) => {
       console.log(props);
-      if (Object.keys(props.value).length === 0) {
+      if (props.value === null) {
             return <div>Loading...</div>
       }
       if (props.value.Response && props.value.Response === "False") {
@@ -80,7 +80,7 @@ const Information = (props) => {
                                                 <p>{props.value.Awards !== 'N/A' && props.value.Awards}</p>
                                           </div>
                                           <div className="poster-image">
-                                                <img src={props.value.Poster} className="img-fluid" alt={props.value.Title}/>
+                                                <img src={props.value.Poster} className="img-fluid" alt={props.value.Title} onClick={props.handleDetail}/>
                                           </div>
                                     </div>
                               </div>

@@ -14,7 +14,7 @@ class Search extends Component {
           <form className="d-flex flex-column" onSubmit={this.props.handleSearch}>
             <input type='text' name='option'/>
             <button className="mt-1">Search for movie</button>
-          </form>
+        </form>
         </div>
       </div>
     )
