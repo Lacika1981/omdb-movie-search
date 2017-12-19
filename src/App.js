@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Search from './Search';
-import Information from './Information'
+import Detail from './Detail'
+import Information from './Information';
 import './styles/styles.css';
 
 class App extends Component {
@@ -16,7 +17,8 @@ class App extends Component {
       .bind(this);
     this.state = {
       data: [],
-      selectedMovie: null
+      selectedMovie: null,
+      movieFullDetail: ''
     }
     };
 
@@ -32,12 +34,17 @@ class App extends Component {
     fetch(`http://www.omdbapi.com/?s=${option}&apikey=7f555475`)
       .then(response => response.json())
       .then(data => this.setState({data: data, selectedMovie: data.Search[0]}))
+      .then(this.state.movieFullDetail = '')
       .catch(error => alert(`Error ${error}`));
   }
 
   handleDetail(e){
     e.preventDefault();
-    console.log(e.target.alt);
+    const option = e.target.alt;
+    fetch(`http://www.omdbapi.com/?t=${option}&apikey=7f555475`)
+      .then(response => response.json())
+      .then(movieFullDetail => this.setState({movieFullDetail}))
+      .catch(error => alert(`Error ${error}`));
   }
 
   render() {
@@ -49,6 +56,7 @@ class App extends Component {
         <Search handleSearch={this.handleSearch}/>
         <Information value={this.state.selectedMovie}
         handleDetail={this.handleDetail}/>
+        <Detail fullMovieDetail={this.state.movieFullDetail}/>
       </div>
     );
   }
