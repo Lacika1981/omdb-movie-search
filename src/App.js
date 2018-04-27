@@ -34,7 +34,7 @@ class App extends Component {
     fetch(`http://www.omdbapi.com/?s=${option}&apikey=7f555475`)
       .then(response => response.json())
       .then(data => this.setState({data: data, selectedMovie: data.Search[0]}))
-      .then(this.state.movieFullDetail = '')
+      .then(this.setState({movieFullDetail: ''}))
       .catch(error => alert(`Error ${error}`));
   }
 
@@ -55,7 +55,8 @@ class App extends Component {
         </div>
         <Search handleSearch={this.handleSearch}/>
         <Information value={this.state.selectedMovie}
-        handleDetail={this.handleDetail}/>
+        handleDetail={this.handleDetail}
+        moviePosters={this.state.data}/>
         <Detail fullMovieDetail={this.state.movieFullDetail}/>
       </div>
     );

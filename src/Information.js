@@ -16,25 +16,19 @@ const Information = (props) => {
       return (
             <div className="container information">
                   <div className="row">
-                        <div className="col">
-                              <div className="text-center movieTitle">
-                                    <h4>Movie title:</h4>
-                                    <p className="pInline">{props.value.Title}
-                                          ({props.value.Year})</p>
-                              </div>
+                        <div className="col text-center">
+                              {props
+                                    .moviePosters
+                                    .Search
+                                    .map(e => <img
+                                          src={e.Poster}
+                                          className="img-thumbnail"
+                                          alt={e.Title}
+                                          key={e.imdbID}
+                                          onClick={props.handleDetail}/>)}
                         </div>
                   </div>
-                  <div className="row">
-                        <div className="col d-flex justify-content-center">
-                              <div className="poster-image">
-                                    <img
-                                          src={props.value.Poster}
-                                          className="img-fluid"
-                                          alt={props.value.Title}
-                                          onClick={props.handleDetail}/>
-                              </div>
-                        </div>
-                  </div>
+
             </div>
       )
 }
